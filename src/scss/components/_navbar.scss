@@ -1,0 +1,170 @@
+$navbar-bg: $gold-col;
+$navbar-color: white;
+
+%pseudo-underline {
+  content: "";
+  width: 0%;
+  height: 0.25rem;
+  background-color: $navbar-color;
+  position: absolute;
+  bottom: 0em;
+  @include transition(all 200ms ease);
+
+  @include desktop{
+    bottom: -.51em;
+  }
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  color: $navbar-color;
+  font-family: $cinzel;
+
+  .navbar__controls {
+    height: 4em;
+    z-index: 10;
+    background-color: transparent;
+    position: relative;
+
+    .navbar__brand {
+      position: absolute;
+      font-size: 2em;
+      margin-left: 0.5em;
+      top: 50%;
+      @include translate(0, -50%);
+      color: transparent;
+      @include transition(all 400ms ease);
+    }
+
+    .navbar__button {
+      position: absolute;
+      margin-top: 0.2em;
+      right: 0;
+      top: 50%;
+      @include translate(0, -50%);
+
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 2;
+
+      @include desktop {
+        display: none;
+      }
+
+      .navbar__ham {
+        margin: auto;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        .line {
+          fill: none;
+          @include transition(all 400ms ease);
+          stroke: white;
+          stroke-width: 4;
+          stroke-linecap: round;
+          stroke-dasharray: 40 121;
+          stroke-dashoffset: 0px;
+        }
+
+        &.line--active {
+          @include rotate (45);
+
+          .line--top,
+          .line--bottom {
+            stroke-dashoffset: -68px;
+          }
+        }
+      }
+    }
+  }
+
+  &.navbar--bgColorVisible {
+    .navbar__controls {
+      background-color: $navbar-bg;
+      .navbar__brand {
+        color: $navbar-color;
+      }
+    }
+
+    .navbar__content {
+      background-color: $navbar-bg;
+
+      @include desktop{
+        background-color: transparent;
+      }
+    }
+  }
+
+  .navbar__content {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    z-index: -10;
+    @include transition(all 400ms ease);
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 1.5em;
+        a {
+          color: white;
+          font-size: 1.7em;
+          position: relative;
+
+          &::before {
+            @extend %pseudo-underline;
+            left: 50%;
+          }
+
+          &::after {
+            @extend %pseudo-underline;
+            right: 50%;
+          }
+          &:hover {
+            &::before {
+              width: 50%;
+            }
+            &::after {
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+
+    &.navbar--collapsed {
+      margin-top: -200%;
+    }
+
+    
+
+    @include desktop {
+      top: 50%;
+      right: 40%;
+      @include translate(50%, -50%);
+      z-index: 10;
+      width: max-content;
+
+      &.navbar--collapsed {
+        margin-top: 0;
+        opacity: 1;
+      }
+
+      ul {
+        display: inline-flex;
+
+        li {
+          margin: 0 2em 0 0;
+        }
+      }
+    }
+
+    @include desktopXL{
+      right: 50%;
+    }
+  }
+}

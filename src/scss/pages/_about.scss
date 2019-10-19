@@ -1,0 +1,21 @@
+.about {
+  .container {
+    p{
+      margin-bottom: 1em;
+    }
+
+    .signature {
+      color: $gold-col;
+
+      h3 {
+        padding-bottom: 0 !important;
+        margin: 0.5em 0 -.1em 0 !important;
+        font-family: $cinzel;
+        font-size: 2em;
+        font-weight: lighter;
+        text-align: center;
+      }
+    }
+    
+  }
+}

@@ -1,0 +1,50 @@
+$dark-bg: #0e2743;
+$light-blue: #154070;
+$gold-col: #cdb877;
+$cinzel: "Cinzel", serif;
+$pink-col :#af135f;
+$black-col: #212529;
+
+
+
+
+
+
+
+$extra-small:327px;
+$sm: 450px;
+$md: 768px;
+$lg: 915px;
+$breakpoint-xl: 1100px;
+
+
+
+@mixin mobileMed {
+  @media (min-width: #{$extra-small}) {
+    @content;
+  }
+}
+
+@mixin mobileLg {
+  @media (min-width: #{$sm}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$md})  {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$lg}) {
+    @content;
+  }
+}
+
+@mixin desktopXL {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}

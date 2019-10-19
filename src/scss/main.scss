@@ -1,0 +1,106 @@
+@import './abstract/mixins';
+@import 'abstract/variables';
+
+@import 'components/container';
+@import 'components/headings';
+@import 'components/navbar';
+@import 'components/masthead';
+@import '../../assets/img/flaticon/font/flaticon.css';
+
+@import 'pages/about';
+@import 'pages/services';
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  a {
+    text-decoration: none;
+  }
+
+  overflow-x: hidden;
+}
+
+%link {
+  //color: $gold-col;
+  text-decoration: none;
+  font-weight: 400;
+  @include transition(all 0.5s ease);
+
+  &:hover {
+    //   color: $pink-col;
+    text-decoration: none;
+  }
+}
+
+p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 100;
+}
+
+
+
+.dark-bg {
+  background-color: $dark-bg;
+  color: #fff;
+  padding-bottom: .5em;
+
+  h1 {
+    color: $gold-col;
+  }
+
+  hr {
+    border-color: $gold-col;
+    padding: 0;
+    width: 100%;
+    width: 875px; 
+    margin: auto auto;
+  }
+
+  .text-highlighted {
+    color: $gold-col;
+    font-weight: 400;
+  }
+
+  a {
+    @extend %link;
+    color: $gold-col;
+
+    &:hover {
+      color: $pink-col;
+    }
+  }
+}
+
+.light-bg {
+  background-color: whitesmoke;
+  color: $black-col;
+  padding-bottom: .5em;
+
+  .text-highlighted {
+    color: $light-blue;
+    font-weight: 400;
+  }
+
+  h1 {
+    color: $black-col;
+  }
+}
+
+.text-block{
+  max-width: 875px !important;
+  text-align: justify;
+  margin: auto auto;
+}
+
+.end-page-logo {
+  margin: 2em auto !important;
+  width: 10%;
+  min-width: 150px;
+  @include flexbox();
+}
