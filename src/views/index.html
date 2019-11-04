@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
   <meta charset="utf-8" />
@@ -13,7 +13,8 @@
   <meta name="keywords"
     content="wine,víno,šampaňské,champagne,France,Moravia,Francie,Morava,Austria,Rakousko,art,umění,sklenice,láhev,exkluzivní,luxusní, Pinot, Chevauchet, chardonnay, meunier, pinot noir, Empreinte de Terroir, rosé, brut extra, Anthime, Sensation, Héritage, Rosé de saignée, Collet, domaine" />
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" />
-  <link rel="stylesheet" href="../scss/main.scss" />
+  
+  
 </head>
 
 <body>
@@ -36,16 +37,16 @@
     <div class="navbar__content navbar--collapsed">
       <ul>
         <li>
-          <a class="smoothScroll" targetH='#about-ID' href="#about-ID">O nás</a>
+          <a class="smoothScroll" data-scroll-target='#about-ID' href="#about-ID">O nás</a>
         </li>
         <li>
-          <a class="smoothScroll" href="#services-ID">Služby</a>
+          <a class="smoothScroll" data-scroll-target='#services-ID' href="#services-ID">Služby</a>
         </li>
         <li>
-          <a href="#">Nabídka</a>
+          <a class="smoothScroll" data-scroll-target="#offer-ID" href="#offer-ID">Nabídka</a>
         </li>
         <li>
-          <a href="#">Kontakt</a>
+          <a class="smoothScroll" data-scroll-target="#contact-ID" href="#contact-ID">Kontakt</a>
         </li>
       </ul>
     </div>
@@ -62,16 +63,16 @@
       <h1>O Nás</h1>
 
       <p class="text-block">
-        <span class="lang" lang-key="about--text-one">
+        <span>
           Naší filosofií je dostat mezi milovníky vína něco trochu jiného a exluzivnějšího, než je aktuální nabídka
           velkoproducentů. Reprezentujeme pouze svá vína na webu nebo eshopu, vše je na bázi osobní spolupráce. Naše
           motto zní, že
         </span>
-        <span class="text-highlighted lang" lang-key="about--text-two"> život je příliš krátký na to, abychom pili
+        <span class="text-highlighted"> život je příliš krátký na to, abychom pili
           nekvalitní víno.
         </span>
         <br />
-        <span class="lang" lang-key="about--text-three">
+        <span>
           Spolupracujeme s malými rodinnými vinařstvími na osobní bázi. V rámci
           svých aktivit pořádáme často degustace jak u nás, tak přímo u
           zákazníků, kde se právě snažíme co nejvíce přiblížit myšlenky
@@ -79,19 +80,18 @@
         </span>
       </p>
       <p class="text-block">
-        <span class="lang" lang-key="about--text-fourth">V případě jakýchkoliv dotazů či podmětů nás neváhejte
+        <span>V případě jakýchkoliv dotazů či podmětů nás neváhejte
         </span>
         <a href="#contact">
-          <span class="lang" lang-key="about--text-fifth">kontaktovat<span> <i
+          <span>kontaktovat<span> <i
                 class="fas fa-angle-double-down"></i></a>.
       </p>
-      <p class="lang text-block" lang-key="about--text-sixth">
+      <p class="text-block">
         Těšíme se až si společně vychutnáme sklenku našich prvotřídních produktů!
       </p>
       <div class="signature">
         <h3>
-          MAREK a MICHAL
-          <strong>KREJČÍ</strong>
+          MAREK a MICHAL KREJČÍ
         </h3>
       </div>
       <hr />
@@ -105,18 +105,19 @@
     <div class="container">
       <h1>Služby</h1>
       <p class="text-block">
-        <span class="lang" lang-key="services--text-first">Nabízíme jedinečné služby ve světě vína – smyslem není pouze
+        <span>Nabízíme jedinečné služby ve světě vína – smyslem není pouze
           prodej vína, ale hlavně spokojenost zákazníků a jejich rostoucí zájem o víno. Díky tomu můžete ochutnat vína
           přímo </span>
-        <span class="text-highlighted lang" lang-key="services--text-second">od vinařů, kteří jeho výrobě dávají 100%
-          úsilí</span><span class="lang" lang-key="services--text-third">, a tím víno získává jedinečný
+        <span class="text-highlighted">od vinařů, kteří jeho výrobě dávají 100%
+          úsilí</span>
+          <span>, a tím víno získává jedinečný
           charakter.</span>
         <br>
-        <span class="text-highlighted lang" lang-key="services--text-fourth">Za kvalitou pečlivě uskladněných lahví si
-          stojíme</span> <span class="lang" lang-key="services--text-fifth">a vše několikrát ročně ochutnáváme, takže se
+        <span class="text-highlighted">Za kvalitou pečlivě uskladněných lahví si
+          stojíme</span> <span>a vše několikrát ročně ochutnáváme, takže se
           nemusíte bát nechat si od nás poradit.</span>
         <br>
-        <span class="lang" lang-key="services--text-sixth">Možná právě vymýšlíte originální dar pro přátelé či vaše
+        <span>Možná právě vymýšlíte originální dar pro přátelé či vaše
           blízké? Proč ne právě vínko s nějakou delikatesou! Ideální narozeninový nebo svatební dar, který musí potěšit
           každého!</span>
       </p>
@@ -124,28 +125,28 @@
     <div class="grid-container container">
       <div>
         <i class="flaticon-wine-tasting"></i>
-        <h4 class="lang" lang-key="services--deg-one">Degustace</h4>
-        <p class="lang" lang-key="services--deg-two">Pravidelně pořádáme soukromé degustace s
+        <h4>Degustace</h4>
+        <p>Pravidelně pořádáme soukromé degustace s
           odborným výkladem. Všechny ochutnané láhve je také možné na místě přímo objednat.</p>
       </div>
       <div>
         <i class="flaticon-discuss-issue"></i>
-        <h4 class="lang" lang-key="services--rec-one">Doporučení</h4>
-        <p class="lang" lang-key="services--rec-two">Rádi poradíme ať již s výběrem té správné láhve
+        <h4>Doporučení</h4>
+        <p>Rádi poradíme ať již s výběrem té správné láhve
           nebo s výletem k vinaři, tak abyste si ho maximáloně užili a obohatili svoje znalosti.
         </p>
       </div>
       <div>
         <i class="flaticon-grapes"></i>
-        <h4 class="lang" lang-key="services--vis-one">Návštěva vinic</h4>
-        <p class="lang" lang-key="services--vis-two">Na přání jsme Vám schopni zajistit návštěvu u
+        <h4>Návštěva vinic</h4>
+        <p>Na přání jsme Vám schopni zajistit návštěvu u
           vinaře. Ať již u našich partnerů na Moravě, tak v i v oblasti Champagne.</p>
       </div>
       
       <div>
         <i class="flaticon-shopping-cart"></i>
-        <h4 class="lang" lang-key="services--sell-one">Prodej</h4>
-        <p class="lang" lang-key="services--sell-two">Nabízíme pouze námi odzkoušené a pečlivě
+        <h4>Prodej</h4>
+        <p>Nabízíme pouze námi odzkoušené a pečlivě
           uskladněné láhve. Samozřejmostí je osobní přístup při každém nákupu. Ozvěte se a nechte
           starost na nás.</p>
       </div>
@@ -155,11 +156,21 @@
     </div>
   </section>
 
-  
+  <section class="dark-bg offer" id="offer-ID">
+    <div class="container">
+      <h1>Nabídka</h1>
+      <div class="suppliers-list">
+        
+      </div>
+            
+    </div>
+    <div>
+      <img class="end-page-logo" src="../../assets/img/main-logo.png" alt="Logo Wine & Art" />
+    </div>
+  </section>
+
 
   <div style="height:200vh"></div>
-
-  <script src="../js/app.js"></script>
 </body>
 
 </html>

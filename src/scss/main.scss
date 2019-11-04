@@ -5,10 +5,17 @@
 @import 'components/headings';
 @import 'components/navbar';
 @import 'components/masthead';
+@import 'components/dark-bg';
+@import 'components/light-bg';
+@import 'components/tiltEl';
+
+
+@import '../../node_modules/flag-icon-css/css/flag-icon.min.css';
 @import '../../assets/img/flaticon/font/flaticon.css';
 
 @import 'pages/about';
 @import 'pages/services';
+@import 'pages/offer';
 
 
 * {
@@ -25,6 +32,7 @@ body {
 
   overflow-x: hidden;
 }
+
 
 %link {
   //color: $gold-col;
@@ -43,54 +51,6 @@ p {
   font-weight: 100;
 }
 
-
-
-.dark-bg {
-  background-color: $dark-bg;
-  color: #fff;
-  padding-bottom: .5em;
-
-  h1 {
-    color: $gold-col;
-  }
-
-  hr {
-    border-color: $gold-col;
-    padding: 0;
-    width: 100%;
-    width: 875px; 
-    margin: auto auto;
-  }
-
-  .text-highlighted {
-    color: $gold-col;
-    font-weight: 400;
-  }
-
-  a {
-    @extend %link;
-    color: $gold-col;
-
-    &:hover {
-      color: $pink-col;
-    }
-  }
-}
-
-.light-bg {
-  background-color: whitesmoke;
-  color: $black-col;
-  padding-bottom: .5em;
-
-  .text-highlighted {
-    color: $light-blue;
-    font-weight: 400;
-  }
-
-  h1 {
-    color: $black-col;
-  }
-}
 
 .text-block{
   max-width: 875px !important;

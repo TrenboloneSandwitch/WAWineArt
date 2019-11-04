@@ -1,0 +1,23 @@
+.suppliers-list{
+  display: block;
+  .supplier{
+    position: relative;
+       
+
+    .supplier__img{
+      position: relative;
+    }
+
+    .supplier__name{
+      position: absolute;
+    }
+
+    .supplier__flag{
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      font-size: 2em;
+      
+    }
+  }
+}

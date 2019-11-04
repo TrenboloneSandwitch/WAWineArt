@@ -1,0 +1,14 @@
+.light-bg {
+  background-color: whitesmoke;
+  color: $black-col;
+  padding-bottom: .5em;
+
+  .text-highlighted {
+    color: $light-blue;
+    font-weight: 400;
+  }
+
+  h1 {
+    color: $black-col;
+  }
+}
