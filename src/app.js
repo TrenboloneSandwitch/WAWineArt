@@ -16,7 +16,8 @@ const elements = {
   content: document.querySelector(".navbar__content"),
   button: document.querySelector(".navbar__button"),
   svg : document.querySelector(".navbar__ham"),
-  logo : document.querySelector(".masthead__logo")
+  logo : document.querySelector(".masthead__logo"),
+  suppliers : document.querySelectorAll('.supplier')
 };
 
 // Init Classes
@@ -37,5 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Window onScroll Listener
 window.onscroll = () => navbar.changeBackroundColor();
 // Window onResize Listener
-window.onresize = () => navbar.changeBrandText();
+window.onresize = () => {
+  navbar.changeNavbarBasedOnWindowSize();
+}
 

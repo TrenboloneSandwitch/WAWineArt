@@ -1,5 +1,6 @@
 $navbar-bg: $gold-col;
 $navbar-color: white;
+$side-margin: 1rem;
 
 %pseudo-underline {
   content: "";
@@ -21,30 +22,27 @@ $navbar-color: white;
   color: $navbar-color;
   font-family: $cinzel;
   z-index: 999;
+  
 
   .navbar__controls {
     height: 4em;
     z-index: 10;
     background-color: transparent;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 
     .navbar__brand {
-      position: absolute;
       font-size: 2em;
-      margin-left: 0.5em;
-      top: 50%;
-      @include translate(0, -50%);
+      margin-left: $side-margin;
       color: transparent;
       @include transition(all 400ms ease);
     }
 
     .navbar__button {
-      position: absolute;
-      margin-top: 0.2em;
-      right: 0;
-      top: 50%;
-      @include translate(0, -50%);
-
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       z-index: 2;
@@ -78,6 +76,21 @@ $navbar-color: white;
         }
       }
     }
+
+    .navbar__language-selector{
+      .lang{
+        color: $navbar-color;
+        font-size: .8em !important;
+        
+        &.active{
+          font-size: .8em !important;
+          cursor: default;
+        }
+      }
+      @include desktop{
+        margin-right: $side-margin;
+      }
+    }
   }
 
   &.navbar--bgColorVisible {
@@ -98,6 +111,7 @@ $navbar-color: white;
   }
 
   .navbar__content {
+    padding-top: 2em;
     position: absolute;
     top: 100%;
     width: 100%;
@@ -141,12 +155,11 @@ $navbar-color: white;
       margin-top: -200%;
     }
 
-    
-
     @include desktop {
+      padding-top: 0;
       top: 50%;
-      right: 40%;
-      @include translate(50%, -50%);
+      left: 50%;
+      @include translate(-40%, -50%);
       z-index: 10;
       width: max-content;
 
@@ -160,6 +173,9 @@ $navbar-color: white;
 
         li {
           margin: 0 2em 0 0;
+          &:nth-of-type(4) {
+            margin: 0;
+          }
         }
       }
     }

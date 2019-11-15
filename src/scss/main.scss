@@ -8,10 +8,12 @@
 @import 'components/dark-bg';
 @import 'components/light-bg';
 @import 'components/tiltEl';
+@import 'components/table';
 
 
 @import '../../node_modules/flag-icon-css/css/flag-icon.min.css';
 @import '../../assets/img/flaticon/font/flaticon.css';
+@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
 
 @import 'pages/about';
 @import 'pages/services';
@@ -46,7 +48,7 @@ body {
   }
 }
 
-p {
+* {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 100;
 }

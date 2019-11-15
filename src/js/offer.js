@@ -5,6 +5,7 @@ const Http = new HttpHandler();
 export class Offer {
   constructor() {
     this.loadSupplier();
+    this.supplierContainer = document.querySelector('.supplier__info');
   }
 
   // Coding itself
@@ -12,11 +13,12 @@ export class Offer {
     const data = await Http.get("../../assets/data/supliers-cs.json");
 
     let list = document.querySelector(".suppliers-list");
-    let html = "";
+    let html = "";    
+
     Object.keys(data).forEach(key => {
       // Create html fo ul
       html += `
-        <div class="supplier base-tilt-element">
+        <div class="supplier base-tilt-element" data-key="${key}")">
           <img class="supplier__img" src="../../assets/${data[key].img}">
           <span class="inner-tilt supplier__text">
             ${data[key].name}
@@ -28,9 +30,25 @@ export class Offer {
     });
     list.innerHTML = html;
 
-    vanillaTilt.init(document.querySelectorAll(".supplier"), {
+    this.addSuppliersAttributes(document.querySelectorAll(".supplier"), data);
+  }
+
+  addSuppliersAttributes(suppliers, data) {
+    vanillaTilt.init(suppliers, {
       max: 25,
       speed: 10000
     });
+
+    suppliers.forEach(sup => {
+      sup.addEventListener('click', ()=>{
+        showBottles(data, sup.dataset.key);
+      });
+    });
+
+    function showBottles(data, key){
+      console.log(data[key]);
+      
+      
+    }
   }
 }
