@@ -12,14 +12,14 @@ export class Offer {
   }
 
   createStructure() {
-    this.supplierContainer = this.createElement('div', 'supplier__info');
+    this.supplierContainer = this.createElement('div', 'supplier__info row');
     this.hr = this.createElement('hr', 'line');
     this.bottlesList = this.createElement('div', 'bottles-list');
   }
 
   createElement(elName, cls = null) {
     const element = document.createElement(elName);
-    if (cls !== null) element.classList.add(cls);
+    if (cls !== null) element.className = cls;
     return element;
   }
 

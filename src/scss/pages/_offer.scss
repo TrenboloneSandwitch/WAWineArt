@@ -4,7 +4,7 @@
   grid-auto-rows: auto;
   grid-gap: 3em;
   margin: 6em auto;
-  justify-items: center;
+  justify-items : center;
 
   @include mobileLg {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -64,15 +64,13 @@
 $sup-logo-width: 33.3333%;
 
 .supplier__info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  @include justify-content(space-around);
   column-gap: 2em;
   margin-bottom: 1.8em;
-  align-items: center;
+  @include align-items(center);
 
   .supplier__info__logo {
-    flex-basis: $sup-logo-width;
+    @include flex-basis($sup-logo-width);
 
     img {
       width: 100%;
@@ -80,7 +78,7 @@ $sup-logo-width: 33.3333%;
   }
 
   .supplier__info__text {
-    flex-basis: 100% - $sup-logo-width;
+    @include flex-basis(100% - $sup-logo-width);
     margin-left: 1em;
     text-align: justify;
   }
@@ -137,7 +135,6 @@ $sup-logo-width: 33.3333%;
 
     }
     &__heading{
-      //height: 2.7rem;
       font-size: 1.5rem;
       font-weight: bolder;
       font-family: $cinzel;
@@ -157,7 +154,7 @@ $sup-logo-width: 33.3333%;
     &__more-info{
       list-style-type: none;
       margin: 0 .5rem;
-      opacity: 0;
+      @include opacity(0);
       @include transition(opacity 150ms ease);
 
     }
@@ -170,7 +167,7 @@ $sup-logo-width: 33.3333%;
         height: 100px
       }
       .bottle__image{
-        opacity: 0;
+        @include opacity(0);
       }
       .bottle__bg-image{
         width: auto;
@@ -183,10 +180,8 @@ $sup-logo-width: 33.3333%;
         height: 100%;
       }
       .bottle__more-info{
-        opacity: 1;
+        @include opacity(1);
       }
     }
   }
-
-
 }

@@ -98,6 +98,16 @@
 	@include transform(translateY($y));
 }
 
+
+@mixin translateZ ($y) {
+	@include transform(translateZ($y));
+}
+
+@mixin perspective ($y) {
+	@include transform(perspective($y));
+}
+
+
 // Skew
 @mixin skew ($x, $y) {
 	@include transform(skew(#{$x}deg, #{$y}deg));

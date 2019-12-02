@@ -1,8 +1,8 @@
 .base-tilt-element{
   transform-style: preserve-3d;
-  transform: perspective(1000px);
+  @include perspective(1000px);
 
   .inner-tilt{
-    transform: translateZ(20px);
+    @include translateZ(20px);
   }
 }

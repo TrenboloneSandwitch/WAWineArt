@@ -1,34 +1,81 @@
 
 @mixin contact-med {
-  @media (min-width: #{$extra-small}) {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+@mixin contact-tablet {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+@mixin contact-big {
+  @media (min-width: 995px) {
     @content;
   }
 }
 
-
-
 .contacts{
-  justify-content: center ;
-  align-items: center;
+  @include justify-content(center) ;
+  @include align-items(center);
+  margin: 2em 0;
+  
 
   .contact{
-    margin: 2em 0;
-    
+    margin: 1em 0; 
 
     &__image{
       border-radius: 50%;
       max-width: 200px;
       max-height: 200px;
+      @include transition(all 300ms ease-in)
+      
     }
     &__info{
-      padding: .5em;
-      align-items: flex-start;
-      justify-content: center;
+      padding: 1em;
+      @include align-items(flex-start);
+      @include justify-content(center);
+      @include transition(all 300ms ease-in);
     
       [class^="flaticon-"]{
         font-size: 2em;
         color: $dark-bg;
       }
     }
+
+    &:hover{
+      .contact__image{
+        @include filter(saturate, 1.3);
+      }
+      .contact__info{
+        @include filter(saturate, 2.3);
+      }
+    }
+  }
+}
+
+@include contact-med(){
+  .contact{
+   @include flex-direction(row);}
+
+  .contact--michal{
+    @include flex-direction(row-reverse);
+  }
+}
+
+
+@include contact-tablet(){
+  .contacts{
+     @include flex-direction(row);
+  }
+
+  .contact{
+     @include flex-direction(column);
+  }
+}
+
+@include contact-big() {
+  .contact{
+     @include flex-direction(row);
   }
 }
