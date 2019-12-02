@@ -24,14 +24,17 @@ const elements = {
 const navbar = new Navbar(elements);
 const smoothScroll = new ScrollMaster(elements.content ,1000, navbar);
 
-const offer = new Offer();
+
 
 // Event Listeners
 // DOM Content Loaded
 document.addEventListener("DOMContentLoaded", () => {
   smoothScroll.init();
   navbar.changeBackroundColor();
+  
 });
+
+window.onload = () => { new Offer();};
 
 
 

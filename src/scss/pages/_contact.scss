@@ -1,0 +1,34 @@
+
+@mixin contact-med {
+  @media (min-width: #{$extra-small}) {
+    @content;
+  }
+}
+
+
+
+.contacts{
+  justify-content: center ;
+  align-items: center;
+
+  .contact{
+    margin: 2em 0;
+    
+
+    &__image{
+      border-radius: 50%;
+      max-width: 200px;
+      max-height: 200px;
+    }
+    &__info{
+      padding: .5em;
+      align-items: flex-start;
+      justify-content: center;
+    
+      [class^="flaticon-"]{
+        font-size: 2em;
+        color: $dark-bg;
+      }
+    }
+  }
+}

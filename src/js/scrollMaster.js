@@ -1,5 +1,3 @@
-
-
 export class ScrollMaster {
     constructor(navbar, defaultDuration, Navbar, starters = '.smoothScroll') {
         this.starters = document.querySelectorAll(starters);

@@ -1,15 +1,16 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 26/09/2018 12:34
+    Creation date: 01/12/2019 16:04
     */
 
     @font-face {
   font-family: "Flaticon";
-  src: url("./font/Flaticon.eot");
-  src: url("./font/Flaticon.eot?#iefix") format("embedded-opentype"),
-       url("./font/Flaticon.woff") format("woff"),
-       url("./font/Flaticon.ttf") format("truetype"),
-       url("./font/Flaticon.svg#Flaticon") format("svg");
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +18,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("./font/Flaticon.svg#Flaticon") format("svg");
+    src: url("./Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -36,12 +37,18 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-discuss-issue:before { content: "\f100"; }
-.flaticon-shopping-cart:before { content: "\f101"; }
-.flaticon-grapes:before { content: "\f102"; }
-.flaticon-wine-tasting:before { content: "\f103"; }
+    .flaticon-wine-tasting:before { content: "\f100"; }
+.flaticon-discuss-issue:before { content: "\f101"; }
+.flaticon-fruit:before { content: "\f102"; }
+.flaticon-shopping-cart:before { content: "\f103"; }
+.flaticon-old-typical-phone:before { content: "\f104"; }
+.flaticon-user:before { content: "\f105"; }
+.flaticon-facebook:before { content: "\f106"; }
     
-    $font-Flaticon-discuss-issue: "\f100";
-    $font-Flaticon-shopping-cart: "\f101";
-    $font-Flaticon-grapes: "\f102";
-    $font-Flaticon-wine-tasting: "\f103";
+    $font-Flaticon-wine-tasting: "\f100";
+    $font-Flaticon-discuss-issue: "\f101";
+    $font-Flaticon-fruit: "\f102";
+    $font-Flaticon-shopping-cart: "\f103";
+    $font-Flaticon-old-typical-phone: "\f104";
+    $font-Flaticon-user: "\f105";
+    $font-Flaticon-facebook: "\f106";

@@ -2,8 +2,8 @@
     "pinot": {
         "hr": "pills-pinot-chev",
         "name": "Pinot-Chevauchet Champagne",
-        "img": "img/wines/pinot-house.jpg",
-        "logo": "img/crbst_logo.png",
+        "img": "img/houses/pinot-house.jpg",
+        "logo": "img/logos/logoPinotChevauchet.png",
         "text": "Champagne house Pinot-Chevauchet je malé rodinné vinařství, které se nachází v samotném srdci Champagne ve vesničce Moussy (4km od Epernay). Na rozloze 4ha se rozkládá 27 vinic, které jsou všechny v apelaci Premier-Cru. Zdejší vína jsou výrazně ovlivněna specifickým vápenito-jílovitým teroir. Roční produkce tohoto domu je 35 000 lahví. Vysoký standard kvality, je zaručen zráním všech láhví minimálně po dobu 5 let.",
         "id": 1,
         "bottles": [{
@@ -67,8 +67,8 @@
     "collet": {
         "hr": "pills-collet",
         "name": "Domaine Collet Champagne",
-        "img": "img/wines/domaine-house.jpg",
-        "logo": "img/logoDomaine1.png",
+        "img": "img/houses/domaine-house.jpg",
+        "logo": "img/logos/logoDomaineCollet.png",
         "text": "Velmi mladé progresivní vinařství oblasti Sezanne, za kterým stojí tři bratři Thomas, Vincent a Florent. Hlavními pěstovanými odrůdami jsou Chardonnay a Pinot Noir, které jsou pro tuto oblast typické a lze na nich odhalit místní terroir. Typické pro jejich vína je fermentace v dřevěných sudech.",
         "id": 2,
         "bottles": [{
@@ -117,8 +117,7 @@
                 "species": ["78% - Pinot Noir", "22% - Chardonnay"],
                 "dosage": "5.5",
                 "img": "img/wines/ANTHIME-sensation.png",
-                "description": ["zdůraznění významnosti Pinotu Noir pro vinařství, hrozny pochází ze 70 let starých vinic „Les Vignes“, macerovány metoudou „Rosé  de Saignée“", "na nose velmi příjemně rozvinuté aroma, kde převládají jahodo-malinové tóny",
-                    "Plné, svěží rosé s jemnými tóny dřevěných sudů"
+                "description": ["zdůraznění významnosti Pinotu Noir pro vinařství, hrozny pochází ze 70 let starých vinic „Les Vignes“, macerovány metoudou „Rosé  de Saignée“", "na nose velmi příjemně rozvinuté aroma, kde převládají jahodo-malinové tóny", "plné, svěží rosé s jemnými tóny dřevěných sudů"
                 ]
             },
             {
@@ -134,8 +133,8 @@
     "colin": {
         "hr": "pills-colin",
         "name": "Champagne Colin",
-        "img": "img/wines/colin-house.jpg",
-        "logo": "img/logo-colin.png",
+        "img": "img/houses/colin-house.jpg",
+        "logo": "img/logos/logoColin.png",
         "text": "Tradice rodinného vinařství Champagne Colin z prestižní vsi Vertus sahá až do roku 1829. Hlavní pěstovanou odrůdou je pro tuto oblast typické Chardonnay. Vinice o rozloze 10ha jsou rozesety od Vertus a okolí až po Sezanne (PN, PM). Pečlivá práce ve vinicích a sklepě dává vínům přesně to co si tato skvělá oblast v Cote de Blanc zasluhuje.",
         "id": 3,
         "bottles": [{
@@ -171,8 +170,8 @@
     "gallais": {
         "hr": "pills-gallais",
         "name": "Champagne Le Gallais",
-        "img": "img/wines/gallais-house.jpg",
-        "logo": "img/logo-gallais.png",
+        "img": "img/houses/gallais-house.jpg",
+        "logo": "img/logos/logoLeGallais.png",
         "text": "Sídlo Champagne Le Gallais se nachází ve vesnici Boursault nedaleko Epernay v samotném srdci Vallée de la Marne. Unikátní je poloha vinic – 7 parcel v jedné „Clos“ v blízkosti zámku Chateau du Boursault. Charlotte a její otec Herve dávají jíž po 5 generací každému vínu příběh a jedinečný charakter, který přesně vystihuje vápencovo — jílovitý terroir.",
         "id": 4,
         "bottles": [{
