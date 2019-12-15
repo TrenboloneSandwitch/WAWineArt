@@ -1,5 +1,5 @@
 
-$dark-bg: #0e2743;
+$dark-bg: rgb(14, 39, 67);
 $light-blue: #154070;
 $gold-col: #cdb877;
 $cinzel: "Cinzel", serif;
@@ -14,6 +14,7 @@ $black-col: #212529;
 
 $extra-small:327px;
 $sm: 450px;
+$mid: 530px;
 $md: 768px;
 $lg: 915px;
 $breakpoint-xl: 1100px;
@@ -28,6 +29,12 @@ $breakpoint-xl: 1100px;
 
 @mixin mobileLg {
   @media (min-width: #{$sm}) {
+    @content;
+  }
+}
+
+@mixin mobileMid {
+  @media (min-width: #{$mid}) {
     @content;
   }
 }

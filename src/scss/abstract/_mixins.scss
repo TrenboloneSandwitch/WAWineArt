@@ -30,6 +30,12 @@
 	filter: alpha(opacity=$IEValue);
 }
 
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow:$shadow;
+    -moz-box-shadow:$shadow;
+    box-shadow:$shadow;
+}
+
 @mixin transition($transition...) {
     -moz-transition:    $transition;
     -o-transition:      $transition;
@@ -182,6 +188,13 @@
     :-moz-placeholder           {@content}
     ::-moz-placeholder          {@content}
     :-ms-input-placeholder      {@content}  
+  }
+
+  
+  @mixin autofill {
+    :-webkit-autofill {@content}
+    :-webkit-autofill:hover {@content}
+    :-webkit-autofill:focus {@content}
   }
 
 

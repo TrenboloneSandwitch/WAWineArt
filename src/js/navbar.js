@@ -1,4 +1,5 @@
 import { LanguageSelector } from './languageSelector';
+import { log } from 'util';
 
 export class Navbar {
   constructor({
@@ -17,14 +18,24 @@ export class Navbar {
 
 
     this.navbarButtonEmit();
+    this.clickOption();
     this.languageElement = new LanguageSelector(915);
     this.languageElement.placeLanguageSelector();
-
   }
   toggleStates() {
     this.content.classList.toggle("navbar--collapsed");
     this.svg.classList.toggle("line--active");
     this.logo.classList.toggle("logo--hidden");
+  }
+
+  clickOption() {
+    const links = this.content.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        if(!this.content.classList.contains('navbar--collapsed')) this.toggleStates();
+      });
+    });
+    
   }
 
 
@@ -33,7 +44,7 @@ export class Navbar {
     this.button.addEventListener("click", e => {
       // Navbar Handling
       this.toggleStates();
-    });
+    });    
   }
 
   //CHANGE BRAND TEXT DEPENDS ON WINDOW WIDTH

@@ -175,7 +175,7 @@
 
   </section>
 
-  <section class="light-bg" id="contact-ID">
+  <section class="light-bg contact-section" id="contact-ID">
     <div class="container">
       <h1>Kontakt</h1>
       <h2 class="text-center quote">Kontaktujte nás telefonicky...</h2>
@@ -196,14 +196,44 @@
         </div>
       </div>
       <h2 class="text-center quote">...nebo využijte přímo našeho kontaktního formuláře a my se ozveme Vám!</h2>
+
+      <form class="form column" id="contactForm" method='POST' role="form" aria-label="Kontaktní Formulář">
+					<input class="form__input" type="text" name="name" placeholder="Karel Novák" id="name"
+						value="<?= htmlspecialchars($name) ?>" data-formType="fullName">
+					<input class="form__input" type="text" name="subject" placeholder="Předmět"
+						id="subject" value="<?= htmlspecialchars($subject) ?>" data-formType="">
+					<input class="form__input" type="text" name="email" placeholder="Vas@email.cz"
+						id="email" value="<?= htmlspecialchars($email) ?>">
+					<input class="form__input" type="text" name="year" placeholder="Aktuální rok."
+						id="year" >
+					<textarea class="form__text-area" type="text" name="msg" placeholder="Text vaší zprávy."
+            id="msg"><?= htmlspecialchars($msg) ?></textarea>
+
+            <div class="form__messages"></div>
+            
+          <input class="full form__button" id="submit" value="ODESLAT" type="submit">
+
+          
+				</form>
+
+
+
     </div>
     <div>
       <img class="end-page-logo" src="../../assets/img/logos-blue.png" alt="Logo Wine & Art" />
     </div>
   </section>
 
+  <section class="dark-bg">
+    <div id="mapID"></div>
+  </section>
 
-  <div style="height:200vh"></div>
+  <footer>
+      <span>Copyright ©2018, WA Wine & Art s.r.o.</span>
+      autor: Jan Soldát
+  </footer>
+
+
+  
 </body>
-
 </html>

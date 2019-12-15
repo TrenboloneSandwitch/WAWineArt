@@ -9,6 +9,7 @@
 @import 'components/light-bg';
 @import 'components/tiltEl';
 @import 'components/table';
+@import 'components/message';
 
 
 @import '../../node_modules/flag-icon-css/css/flag-icon.min.css';
@@ -19,7 +20,7 @@
 @import 'pages/services';
 @import 'pages/offer';
 @import 'pages/contact';
-
+@import 'pages/map';
 
 * {
   padding: 0;

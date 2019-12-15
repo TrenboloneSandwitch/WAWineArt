@@ -1,0 +1,49 @@
+#mapID{
+  width: 100vw;
+  height: 500px;
+
+  .infowindow{
+    color: black;
+    @include flexbox();
+    @include flex-direction(column);
+    font-size: 1.3em;
+    &__heading{
+      text-align: center;
+      color: $gold-col;
+      margin:   0 0 .5em 0 ;
+    }
+
+    &__text {
+      color: $dark-bg
+    }
+
+    &__adress{
+      @include flexbox();
+      @include flex-direction(column);
+      
+      @include align-items(center);
+      
+      span{
+        text-align: left;
+        font-weight: 500;
+      }
+    }
+    &__button {
+      box-shadow: none;
+      width: fit-content;
+      margin:  .5em auto 0 auto;
+      font-size: 1.5em;
+      font-weight: 300;
+      padding: .2em;
+      border: 1px solid $gold-col;
+      background-color: $dark-bg;
+      color: $gold-col;
+      @include transition(all 300ms ease-in-out);
+      cursor: pointer;
+
+      &:hover {
+        @include filter(invert, 5%)
+      }
+    }
+  }
+}

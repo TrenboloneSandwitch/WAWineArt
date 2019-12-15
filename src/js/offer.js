@@ -1,4 +1,6 @@
+import { ScrollMaster } from "./scrollMaster";
 import { HttpHandler } from "./httpHandler";
+import { log } from "util";
 const vanillaTilt = require("vanilla-tilt");
 const Http = new HttpHandler();
 
@@ -28,7 +30,7 @@ export class Offer {
     let html = "";    
     Object.keys(data).forEach(key => {
       html += `
-        <div class="supplier base-tilt-element" data-key="${key}")">
+        <div class="supplier base-tilt-element" data-key="${key}" data-scroll-target='.supplier__info'">
           <img class="supplier__img" src="../../assets/${data[key].img}">
           <span class="inner-tilt supplier__text">
             ${data[key].name}
@@ -40,21 +42,26 @@ export class Offer {
     });
     this.suppliersList.innerHTML = html;
     this.addSuppliersAttributes(document.querySelectorAll(".supplier"), data);
+    new ScrollMaster(1000, '.supplier').init();
   }
 
   addSuppliersAttributes(suppliers, data) {
-    
-    vanillaTilt.init(suppliers, {
+    const suppliersArr = suppliers;
+    const d = data;
+
+    vanillaTilt.init(suppliersArr, {
       max: 25,
       speed: 10000
     });
 
-    suppliers.forEach(sup => {
+    suppliersArr.forEach(sup => {
       sup.addEventListener('click', ()=>{
+        suppliersArr.forEach(s => { if (s.classList.contains('active')) s.classList.remove('active'); });    
+        sup.classList.add('active');
         this.mainContainer.append(this.supplierContainer, this.hr,this.bottlesList);
-        this.insertAdditionallInfos(data[sup.dataset.key]);
+        this.insertAdditionallInfos(d[sup.dataset.key]);
       });
-    });
+    })    
   }
 
   insertAdditionallInfos(data){

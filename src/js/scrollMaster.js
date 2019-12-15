@@ -1,22 +1,19 @@
+
+
 export class ScrollMaster {
-    constructor(navbar, defaultDuration, Navbar, starters = '.smoothScroll') {
-        this.starters = document.querySelectorAll(starters);
+    constructor(defaultDuration, starters = '.smoothScroll') {
+        this.starters = document.querySelectorAll(starters);        
         this.defaultDuration = defaultDuration;
-        this.navbar = navbar;
-        this.Navbar = Navbar;
     }
 
     init() {
         // Smooth Scroll Listener
         this.starters.forEach((starter) => {
-            starter.addEventListener('click', () => {
+            starter.addEventListener('click', () => {               
                 let elementDuration = this.defaultDuration;
                 if (starter.dataset.scrollDuration) elementDuration = starter.dataset.scrollDuration;
                 const starterTarget = document.querySelector(starter.dataset.scrollTarget);
                 this.smoothScroll(starterTarget, elementDuration);
-
-                if(!this.navbar.classList.contains('navbar--collapsed')) this.Navbar.toggleStates();
-
             });
         });
     }
