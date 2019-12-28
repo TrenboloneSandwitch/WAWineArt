@@ -72,7 +72,7 @@ async function fillDOM() {
   
 }
 
-async function loadMap() {
+export async function loadMap() {
   new Map();
   let mapElement = document.getElementById("mapID");
   const gmap = await Map.loadGoogleMapsApi();

@@ -2,6 +2,8 @@ import { Translation } from "./translation";
 const Translator = new Translation;
 import { Suppliers } from "./suppliers";
 
+import { loadMap } from "../app.js";
+
 export class LanguageSelector {
   constructor(width, langElements, offer) {
     this.width = width;
@@ -91,6 +93,8 @@ export class LanguageSelector {
 
     const send = lang === 'en' ? 'SEND' : 'ODESLAT';
     document.querySelector('.form__button').setAttribute('value', send);
+
+    loadMap();
   }
 
   async changeLanguageInDOM(selector) {
