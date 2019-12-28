@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
+    "aos": "^3.0.0-beta.6",
     "core-js": "^3.3.4",
     "flag-icon-css": "^3.4.5",
     "joi": "^14.3.1",

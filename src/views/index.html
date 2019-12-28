@@ -1,17 +1,62 @@
+<?php
+    mb_internal_encoding("UTF-8");
+    $hlaska = '';
+    if (isset($_GET['uspech']))
+        $hlaska = 'Email byl úspěšně odeslán, brzy vám odpovíme. / Email was successfully sent. We will reply you as soon as possible.';
+    if ($_POST) // V poli _POST něco je, odeslal se formulář
+    {
+        if (isset($_POST['name']) && $_POST['name'] &&
+            isset($_POST['email']) && $_POST['email'] &&
+            isset($_POST['subject']) && $_POST['subject'] &&
+            isset($_POST['msg']) && $_POST['msg'] &&
+            isset($_POST['year']) && $_POST['year'] == date('Y'))
+        {
+            $hlavicka = 'From:' . $_POST['email'];
+            $hlavicka .= "\nMIME-Version: 1.0\n";
+            $hlavicka .= "Content-Type: text/html; charset=\"utf-8\"\n";
+            $adresa = 'wineandart@centrum.cz';
+            $contentMsg = 'Odesílatel: '.$_POST['name'].".\n"."Zpráva: ".$_POST['msg'];
+            $contentMsg = '<ul style="list-style: none;"><li style="margin-bottom:20px;"><strong>Odesílatel: '.'</strong>'.$_POST['name'].'</li>';
+            $contentMsg .= '<li style="margin-bottom:20px";><strong>Předmět: '.'</strong>'.$_POST['subject'].'</li>';
+            $contentMsg .= '<li style="margin-bottom:20px";><strong>Datum a čas odeslání zprávy: '.'</strong>'.date("d.m.Y").', '.date("H:i:s").'</li>';
+            $contentMsg .= '<li style="margin-bottom:40px";><strong>Email: '.'</strong>'.$_POST['email'].'</li>';
+            $contentMsg .= '<li><strong>Zpráva: '.'</strong>'.$_POST['msg'].'</li></ul>';
+            $predmet = 'Nová zpráva z kontaktního formuláře WA';
+            $uspech = mb_send_mail($adresa, $predmet, $contentMsg, $hlavicka);
+            if ($uspech)
+            {
+                $hlaska = 'Email byl úspěšně odeslán, brzy vám odpovíme. / Email was successfully sent. We will reply you as soon as possible.';
+                header('Location: index.php?uspech=ano#msg');
+                exit;
+            }
+            else
+                $hlaska = 'Email se nepodařilo odeslat. Zkontrolujte adresu.';
+        }
+        else 
+            $hlaska = 'Formulář není správně vyplněný!';
+    }
+?>
 <!DOCTYPE html>
 <html lang="cs">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>WA Wine & Art - Milevsko</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="author" content="Jan Soldát" />
-  <meta lang="cs" />
-  <meta name="description"
-    content="Prodej exkluzivních vín z malých rodinných podniků nacházejících se v České republice, Francii či Rakousku. Naše motto zní, že život je příliš krátký na to, abychom pili nekvalitní víno." />
-  <meta name="keywords"
-    content="wine,víno,šampaňské,champagne,France,Moravia,Francie,Morava,Austria,Rakousko,art,umění,sklenice,láhev,exkluzivní,luxusní, Pinot, Chevauchet, chardonnay, meunier, pinot noir, Empreinte de Terroir, rosé, brut extra, Anthime, Sensation, Héritage, Rosé de saignée, Collet, domaine" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WA Wine & Art - Milevsko</title>
+    <meta name="description" content="Prodej exkluzivních vín z malých rodinných podniků nacházejících se v České republice, Francii či Rakousku. Naše motto zní, že život je příliš krátký na to, abychom pili nekvalitní víno." />
+    <meta name="keywords" content="wine,víno,šampaňské,champagne,France,Moravia,Francie,Morava,Austria,Rakousko,art,umění,sklenice,láhev,exkluzivní,luxusní, Pinot, Chevauchet, chardonnay, meunier, pinot noir, Empreinte de Terroir, rosé, brut extra, Anthime, Sensation, Héritage, Rosé de saignée, Collet, domaine" />
+    <meta name="author" content="Jan Soldát" />
+    <meta name="robots" content="index, follow">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Wine & Art - Milevsko" /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:url" content="http://wawineart.cz/" /> 
+    <meta property="og:image" content="http://wawineart.cz/assets/img/main-picture.jpg" /> 
+    <meta property="og:description" content="Prodej exkluzivních vín z malých rodinných podniků nacházejících se v České republice, Francii či Rakousku." />
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" />
 
 
@@ -38,18 +83,18 @@
     </div>
 
     <div class="navbar__content navbar--collapsed">
-      <ul class="bottle__list">
+      <ul class="navbar__list">
         <li>
-          <a class="smoothScroll" data-scroll-target='#about-ID' href="#about-ID">O nás</a>
+          <a class="smoothScroll" data-scroll-target='#about-ID' data-lang="about">O nás</a>
         </li>
         <li>
-          <a class="smoothScroll" data-scroll-target='#services-ID' href="#services-ID">Služby</a>
+          <a class="smoothScroll" data-scroll-target='#services-ID'  data-lang="services">Služby</a>
         </li>
         <li>
-          <a class="smoothScroll" data-scroll-target="#offer-ID" href="#offer-ID">Nabídka</a>
+          <a class="smoothScroll" data-scroll-target="#offer-ID"  data-lang="offer">Nabídka</a>
         </li>
         <li>
-          <a class="smoothScroll" data-scroll-target="#contact-ID" href="#contact-ID">Kontakt</a>
+          <a class="smoothScroll" data-scroll-target="#contact-ID"  data-lang="contact">Kontakt</a>
         </li>
         <li class="navbar__language-selector language-selector--mobile">
 
@@ -58,7 +103,7 @@
     </div>
   </nav>
 
-  <header class="masthead">
+  <header class="masthead" >
     <div class="masthead__overlay">
       <div class="masthead__logo"></div>
     </div>
@@ -66,128 +111,108 @@
 
   <section class="dark-bg about" id="about-ID">
     <div class="container">
-      <h1>O Nás</h1>
+      <h1 data-lang="about" data-aos="fade-up"></h1>
 
       <p class="text-block">
-        <span>
-          Naší filosofií je dostat mezi milovníky vína něco trochu jiného a exluzivnějšího, než je aktuální nabídka
-          velkoproducentů. Reprezentujeme pouze svá vína na webu nebo eshopu, vše je na bázi osobní spolupráce. Naše
-          motto zní, že
-        </span>
-        <span class="text-highlighted"> život je příliš krátký na to, abychom pili
-          nekvalitní víno.
-        </span>
-        <br />
-        <span>
-          Spolupracujeme s malými rodinnými vinařstvími na osobní bázi. V rámci
-          svých aktivit pořádáme často degustace jak u nás, tak přímo u
-          zákazníků, kde se právě snažíme co nejvíce přiblížit myšlenky
-          jednotlivých vinařství a jejich přístup k výrobě vína.
-        </span>
+        <span data-lang="about-1" data-aos="fade-right"></span>
+        <span class="text-highlighted" data-lang="about-2" data-aos="fade-right"></span>
+        <span data-lang="about-3" data-aos="fade-right"></span>
+        <span class="text-highlighted" data-lang="about-4" data-aos="fade-right"></span>
       </p>
       <p class="text-block">
-        <span>V případě jakýchkoliv dotazů či podmětů nás neváhejte
-        </span>
-        <a href="#contact">
-          <span>kontaktovat<span>
-              <span class="fas fa-angle-double-down"></span>
-        </a> .
+        <span data-lang="about-5" data-aos="fade-right"></span>
+        <span class="text-highlighted" data-lang="about-6" data-aos="fade-right"></span>
+        <span data-lang="about-7" data-aos="fade-right"></span>
+      </p>
+
+      <p class="text-block">
+          <span data-lang="about-8" data-aos="fade-right"></span>
       </p>
       <p class="text-block">
-        Těšíme se až si společně vychutnáme sklenku našich prvotřídních produktů!
+          <span data-lang="about-9" data-aos="fade-right"> 
+          </span>
+          <span class="text-highlighted" data-lang="about-10" data-aos="fade-right"></span>
+          <span data-lang="about-11" data-aos="fade-right"></span>
       </p>
       <div class="signature">
-        <h3>
+        <h3 data-aos="fade-up">
           MAREK a MICHAL KREJČÍ
         </h3>
       </div>
-      <hr class="line line--limited" />
+      <hr class="line line--limited" data-aos="zoom-in"/>
     </div>
-    <div>
+    <div data-aos="fade-down">
       <img class="end-page-logo" src="../../assets/img/main-logo.png" alt="Logo Wine & Art" />
     </div>
   </section>
 
   <section class="light-bg services" id="services-ID">
     <div class="container">
-      <h1>Služby</h1>
+      <h1 data-lang="services" data-aos="fade-up"></h1>
       <p class="text-block">
-        <span>Nabízíme jedinečné služby ve světě vína – smyslem není pouze
-          prodej vína, ale hlavně spokojenost zákazníků a jejich rostoucí zájem o víno. Díky tomu můžete ochutnat vína
-          přímo </span>
-        <span class="text-highlighted">od vinařů, kteří jeho výrobě dávají 100%
-          úsilí</span>
-        <span>, a tím víno získává jedinečný
-          charakter.</span>
+        <span data-lang="services-1" data-aos="fade-right"></span>
+        <span class="text-highlighted" data-lang="services-2" data-aos="fade-right"></span>
+        <span data-lang="services-3" data-aos="fade-right"></span>
         <br>
-        <span class="text-highlighted">Za kvalitou pečlivě uskladněných lahví si
-          stojíme</span> <span>a vše několikrát ročně ochutnáváme, takže se
-          nemusíte bát nechat si od nás poradit.</span>
+        <span class="text-highlighted" data-lang="services-4" data-aos="fade-right"></span> <span data-lang="services-5" data-aos="fade-right"></span>
         <br>
-        <span>Možná právě vymýšlíte originální dar pro přátelé či vaše
-          blízké? Proč ne právě vínko s nějakou delikatesou! Ideální narozeninový nebo svatební dar, který musí potěšit
-          každého!</span>
+        <span data-lang="services-6" data-aos="fade-right"></span>
       </p>
     </div>
     <div class="grid-container container">
       <div>
-        <i class="flaticon-wine-tasting"></i>
-        <h4>Degustace</h4>
-        <p>Pravidelně pořádáme soukromé degustace s
-          odborným výkladem. Všechny ochutnané láhve je také možné na místě přímo objednat.</p>
+        <i class="flaticon-wine-tasting" data-aos="zoom-in"></i>
+        <h4 data-lang="services__deg-1" data-aos="fade-right"></h4>
+        <p data-lang="services__deg-2" data-aos="fade-up"></p>
       </div>
       <div>
-        <i class="flaticon-discuss-issue"></i>
-        <h4>Doporučení</h4>
-        <p>Rádi poradíme ať již s výběrem té správné láhve
-          nebo s výletem k vinaři, tak abyste si ho maximáloně užili a obohatili svoje znalosti.
+        <i class="flaticon-discuss-issue" data-aos="zoom-in">></i>
+        <h4 data-lang="services__rec-1" data-aos="fade-right"></h4>
+        <p data-lang="services__rec-2" data-aos="fade-up">
         </p>
       </div>
       <div>
-        <i class="flaticon-fruit"></i>
-        <h4>Návštěva vinic</h4>
-        <p>Na přání jsme Vám schopni zajistit návštěvu u
-          vinaře. Ať již u našich partnerů na Moravě, tak v i v oblasti Champagne.</p>
+        <i class="flaticon-fruit" data-aos="zoom-in"></i>
+        <h4 data-lang="services__vis-1" data-aos="fade-right"></h4>
+        <p data-lang="services__vis-2" data-aos="fade-up"></p>
       </div>
 
       <div>
-        <i class="flaticon-shopping-cart"></i>
-        <h4>Prodej</h4>
-        <p>Nabízíme pouze námi odzkoušené a pečlivě
-          uskladněné láhve. Samozřejmostí je osobní přístup při každém nákupu. Ozvěte se a nechte
-          starost na nás.</p>
+        <i class="flaticon-shopping-cart" data-aos="zoom-in"></i>
+        <h4 data-lang="services__sel-1" data-aos="fade-right"></h4>
+        <p data-lang="services__sel-2" data-aos="fade-up"></p>
       </div>
     </div>
     <div>
-      <img class="end-page-logo" src="../../assets/img/logos-blue.png" alt="Logo Wine & Art" />
+      <img class="end-page-logo" src="../../assets/img/logos-blue.png" alt="Logo Wine & Art" data-aos="fade-down"/>
     </div>
   </section>
 
   <section class="dark-bg offer" id="offer-ID">
     <div class="container container--offer">
-      <h1>Nabídka</h1>
-      <div class="suppliers-list">
+      <h1 data-lang="offer" data-aos="fade-up"></h1>
+      <div class="suppliers-list" data-aos="fade-up">
       </div>
 
     </div>
     <br>
-    <img class="end-page-logo" src="../../assets/img/main-logo.png" alt="Logo Wine & Art" />
+    <img class="end-page-logo" src="../../assets/img/main-logo.png" alt="Logo Wine & Art" data-aos="fade-down"/>
 
   </section>
 
   <section class="light-bg contact-section" id="contact-ID">
     <div class="container">
-      <h1>Kontakt</h1>
-      <h2 class="text-center quote">Kontaktujte nás telefonicky...</h2>
+      <h1 data-lang="contact" data-aos="fade-up"></h1>
+      <h2 class="text-center quote" data-lang="contact-1" data-aos="fade-right"></h2>
       <div class="contacts column">
-        <div class="contact contact--marek column">
+        <div class="contact contact--marek column" data-aos="fade-up">
           <img class="contact__image" src="../../assets/img/contact/mar.jpg" alt="Marek Krejčí">
           <div class="contact__info column">
             <h3 class="contact__name"> <i class="flaticon-user"></i> Marek Krejčí</h3>
             <h3 class="contact__phone"> <i class="flaticon-old-typical-phone"></i> +420 606 119 475</h3>
           </div>
         </div>
-        <div class="contact contact--michal column">
+        <div class="contact contact--michal column" data-aos="fade-down">
           <img class="contact__image" src="../../assets/img/contact/mich.jpg" alt="Michal Krejčí">
           <div class="contact__info column">
             <h3 class="contact__name"> <i class="flaticon-user"></i> Michal Krejčí</h3>
@@ -195,45 +220,51 @@
           </div>
         </div>
       </div>
-      <h2 class="text-center quote">...nebo využijte přímo našeho kontaktního formuláře a my se ozveme Vám!</h2>
+      <h2 class="text-center quote" data-lang="contact-2" data-aos="fade-right"></h2>
 
-      <form class="form column" id="contactForm" method='POST' role="form" aria-label="Kontaktní Formulář">
-					<input class="form__input" type="text" name="name" placeholder="Karel Novák" id="name"
-						value="<?= htmlspecialchars($name) ?>" data-formType="fullName">
-					<input class="form__input" type="text" name="subject" placeholder="Předmět"
-						id="subject" value="<?= htmlspecialchars($subject) ?>" data-formType="">
-					<input class="form__input" type="text" name="email" placeholder="Vas@email.cz"
-						id="email" value="<?= htmlspecialchars($email) ?>">
-					<input class="form__input" type="text" name="year" placeholder="Aktuální rok."
-						id="year" >
-					<textarea class="form__text-area" type="text" name="msg" placeholder="Text vaší zprávy."
-            id="msg"><?= htmlspecialchars($msg) ?></textarea>
+      <form class="form column" id="contactForm" method='POST' aria-label="Kontaktní Formulář">
+        <input class="form__input" type="text" name="name" placeholder="Karel Novák" id="name" data-aos="fade-down">
+        <input class="form__input" type="text" name="subject" placeholder="Předmět" id="subject" data-aos="fade-down">
+        <input class="form__input" type="text" name="email" placeholder="Vas@email.cz" id="email" data-aos="fade-down">
+        <input class="form__input" type="text" name="year" placeholder="Aktuální rok." id="year" data-aos="fade-down">
+        <textarea class="form__input form__text-area" name="msg" placeholder="Text vaší zprávy." id="msg" data-aos="fade-down"></textarea>
 
-            <div class="form__messages"></div>
-            
-          <input class="full form__button" id="submit" value="ODESLAT" type="submit">
+        <div class="form__messages"></div>
 
-          
-				</form>
+        <input class="full form__button" id="submit" value="" type="submit" data-aos="fade-down">
 
 
+      </form>
+
+      <?php 
+				  if ($hlaska){
+				  if ($hlaska=='Email byl úspěšně odeslán, brzy vám odpovíme. / Email was successfully sent. We will reply you as soon as possible.'){
+					echo('<p align="center" style="font-size:2em;color:green;">' . htmlspecialchars($hlaska) . '</p>');
+				  }
+				  else {
+					echo('<p style="color:red">' . htmlspecialchars($hlaska) . '</p>');
+				  }
+				}
+			  ?>
 
     </div>
     <div>
-      <img class="end-page-logo" src="../../assets/img/logos-blue.png" alt="Logo Wine & Art" />
+      <img class="end-page-logo" src="../../assets/img/logos-blue.png" alt="Logo Wine & Art" data-aos="fade-down"/>
     </div>
   </section>
 
   <section class="dark-bg">
-    <div id="mapID"></div>
+    <div id="mapID" data-aos="fade-up"></div>
   </section>
 
-  <footer>
-      <span>Copyright ©2018, WA Wine & Art s.r.o.</span>
-      autor: Jan Soldát
+  <footer class="footer column">
+    <a href="https://www.facebook.com/wineandart.cz" class="flaticon-facebook footer__social">&nbsp;</a>
+    <p class="footer__copyright">Copyright ©2018, WA Wine & Art s.r.o.</p>
+    <p class="footer__author">Jan Soldát</p>
   </footer>
 
 
-  
+
 </body>
+
 </html>

@@ -7,20 +7,23 @@ export class Navbar {
     brand,
     content,
     button,
-    logo
-  }) {
+    logo,
+    langElements
+  }/*, offer*/) {
     this.navbar = navbar;
     this.brand = brand;
     this.content = content;
     this.button = button;
     this.svg = this.button.querySelector(".navbar__ham");
     this.logo = logo;
+    this.langElements = langElements;
+   // this.offer = offer;
 
 
     this.navbarButtonEmit();
     this.clickOption();
-    this.languageElement = new LanguageSelector(915);
-    this.languageElement.placeLanguageSelector();
+   this.languageElement = new LanguageSelector(915, this.langElements);
+  this.languageElement.placeLanguageSelector();
   }
   toggleStates() {
     this.content.classList.toggle("navbar--collapsed");
@@ -57,7 +60,7 @@ export class Navbar {
     }
     this.brand.innerText = brandText;
 
-    this.languageElement.placeLanguageSelector();
+    //this.languageElement.placeLanguageSelector();
   }
 
   changeBackroundColor() {

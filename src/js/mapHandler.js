@@ -44,6 +44,9 @@ class Map {
     });
   }
   static async createMap(googleMaps, mapElement, centerPos) {
+
+    const lang = localStorage.getItem('siteLang');
+
     const mapOption = {
       zoom: 16,
       center: centerPos,
@@ -69,10 +72,12 @@ class Map {
       "WA Wine & Art s.r.o."
     ).createMarker();
 
+    const texts = (lang === 'cs') ? [' Zde sídlíme, budeme moc rádi, když nás přijedete navštívit na jednu z námi konaných degustací.', 'NAVIGOVAT', 'Město kde se nacházíme'] : ['Here is our company located. It\'ll be our pleasure if you come to visit us on one of our events.', 'NAVIGATE', 'City where we are based' ];
+
     const infoW = new InfoWindow(`
     <div class="infowindow">
       <h2 class="infowindow__heading">WA Wine & ART s.r.o.</h2>
-      <p class="infowindow__text"> Zde sídlíme. A budeme moc rádi, když nás přijedete navštívit na jednu z, námi konaných, degustací.
+      <p class="infowindow__text"> ${texts[0]}
       </p>
       <p class="infowindow__adress">
         <span>Masarykova 577,</span> 
@@ -82,7 +87,7 @@ class Map {
       </p>
       
       <button onclick="location.href='https://goo.gl/maps/Kbaabi23GLo'" class="infowindow__button">
-        NAVIGOVAT
+      ${texts[1]}
       </button>
     </div>`).createInfoWindow();
 
@@ -96,7 +101,7 @@ class Map {
       { lat: 49.4574, lng: 14.3633936 },
       map,
       "assets/img/mil_marker.png",
-      "Město kde se nacházíme"
+      texts[2]
     ).createMarker();
 
     /* const marker = this.createMarker(centerPos, map, "img/wine-locator.png", "WA Wine & Art s.r.o.");

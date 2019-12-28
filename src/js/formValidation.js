@@ -28,7 +28,7 @@ export class formValidation {
     const date = new Date().getFullYear();
 
     if (parseInt(this.inputs[3].value.trim()) !== date) {
-      errors.push("vyplněný rok se neshoduje s aktuálním");
+      errors.push("vyplněný rok se neshoduje s aktuálním / you entered an invalid year");
     }
 
     const { error } = this.validateForm(formObject);
@@ -45,7 +45,7 @@ export class formValidation {
       this.createErrorMessages(errors);
       e.preventDefault();
     }
-    e.preventDefault();
+    
   }
 
   createErrorMessages(errors) {
