@@ -5,9 +5,9 @@ import "./scss/main.scss";
 import { Map } from "./js/mapHandler";
 import { Translation } from "./js/translation";
 import { Suppliers } from "./js/suppliers";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import { LanguageSelector } from "./js/languageSelector";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 /*   APP JS   */
 // Loading element from DOM
@@ -35,11 +35,10 @@ const wineArtPos = {
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = new Navbar(elements);
   const smoothScroll = new ScrollMaster(1000);
-  
+
   new formValidation(elements.form);
   const suppliers = new Suppliers();
   suppliers.loadData();
-
 
   smoothScroll.init();
   navbar.changeBackroundColor();
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadMap();
   AOS.init({
     delay: 50,
-    duration: 400,
+    duration: 400
   });
 
   // Window onScroll Listener
@@ -60,16 +59,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fillDOM() {
   const Translator = new Translation();
-  const lang = localStorage.getItem("siteLang") ? localStorage.getItem("siteLang") : 'cs';
-  
-  await Translator.translateFromJSON(lang, "../../assets/data/lang_obj.json", elements.langElements,'data-lang');
-  
-  const sourceObject = lang === 'en' ? ['John Doe', 'Subject', 'your@e-mail.com', 'Current Year', 'Text of your message...']  : ['Karel Novák', 'Předmět', 'vas@e-mail.cz', 'Aktuální Rok', 'Text Vaší zprávy...'];
-  Translator.translateAttribute(sourceObject, document.querySelectorAll('.form__input'), 'placeholder');
+  const tr = new LanguageSelector();
+  const lang = localStorage.getItem("siteLang")
+    ? localStorage.getItem("siteLang")
+    : "cs";
 
-  const send = lang === 'en' ? 'SEND' : 'ODESLAT';
-  document.querySelector('.form__button').setAttribute('value', send);
-  
+  tr.translationHelp(lang, elements.langElements);
+  // const lang = localStorage.getItem("siteLang")
+  //   ? localStorage.getItem("siteLang")
+  //   : "cs";
+
+  // await Translator.translateFromJSON(
+  //   lang,
+  //   "../../assets/data/lang_obj.json",
+  //   elements.langElements,
+  //   "data-lang"
+  // );
+
+  // const sourceObject =
+  //   lang === "en"
+  //     ? [
+  //         "John Doe",
+  //         "Subject",
+  //         "your@e-mail.com",
+  //         "Current Year",
+  //         "Text of your message..."
+  //       ]
+  //     : [
+  //         "Karel Novák",
+  //         "Předmět",
+  //         "vas@e-mail.cz",
+  //         "Aktuální Rok",
+  //         "Text Vaší zprávy..."
+  //       ];
+  // Translator.translateAttribute(
+  //   sourceObject,
+  //   document.querySelectorAll(".form__input"),
+  //   "placeholder"
+  // );
+
+  // const send = lang === "en" ? "SEND" : "ODESLAT";
+  // document.querySelector(".form__button").setAttribute("value", send);
 }
 
 export async function loadMap() {

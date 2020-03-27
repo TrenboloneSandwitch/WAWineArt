@@ -1,5 +1,5 @@
 import { Translation } from "./translation";
-const Translator = new Translation;
+const Translator = new Translation();
 import { Suppliers } from "./suppliers";
 
 import { loadMap } from "../app.js";
@@ -37,10 +37,12 @@ export class LanguageSelector {
     if (active.style.display == "none") active.style.display = "block";
     if (active.childElementCount > 1) return;
 
-    const activeLang = localStorage.getItem("siteLang") ? localStorage.getItem("siteLang") : 'cs';
+    const activeLang = localStorage.getItem("siteLang")
+      ? localStorage.getItem("siteLang")
+      : "cs";
     if (activeLang) {
       let html;
-      if (activeLang === 'cs') {
+      if (activeLang === "cs") {
         html = `
         <a href="#cs" class="lang active"> 
         <span class="flag-icon flag-icon-cz"></span></a> / 
@@ -86,28 +88,58 @@ export class LanguageSelector {
     }
   }
 
+  async translationHelp(lang, elements) {
+    Translator.translateFromJSON(
+      lang,
+      "../../assets/data/lang_obj.json",
+      elements,
+      "data-lang"
+    );
+
+    const sourceObject =
+      lang === "en"
+        ? [
+            "John Doe",
+            "Subject",
+            "your@e-mail.com",
+            "Current Year",
+            "Text of your message..."
+          ]
+        : [
+            "Karel Novák",
+            "Předmět",
+            "vas@e-mail.cz",
+            "Aktuální Rok",
+            "Text Vaší zprávy..."
+          ];
+    Translator.translateAttribute(
+      sourceObject,
+      document.querySelectorAll(".form__input"),
+      "placeholder"
+    );
+
+    const send = lang === "en" ? "SEND" : "ODESLAT";
+    document.querySelector(".form__button").setAttribute("value", send);
+  }
+
   async translate(lang) {
-    Translator.translateFromJSON(lang,"../../assets/data/lang_obj.json", this.langElements, 'data-lang');
-    const sourceObject = lang === 'en' ? ['John Doe', 'Subject', 'your@e-mail.com', 'Current Year', 'Text of your message...']  : ['Karel Novák', 'Předmět', 'vas@e-mail.cz', 'Aktuální Rok', 'Text Vaší zprávy...'];
-    Translator.translateAttribute(sourceObject, document.querySelectorAll('.form__input'), 'placeholder');
-
-    const send = lang === 'en' ? 'SEND' : 'ODESLAT';
-    document.querySelector('.form__button').setAttribute('value', send);
-
+    this.translationHelp(lang, this.langElements);
     loadMap();
   }
 
   async changeLanguageInDOM(selector) {
-    const lang = selector.href.substring(selector.href.length - 2, selector.href.length);
-    localStorage.setItem('siteLang', lang);
+    const lang = selector.href.substring(
+      selector.href.length - 2,
+      selector.href.length
+    );
+    localStorage.setItem("siteLang", lang);
 
     this.translate(lang);
 
-    document.querySelectorAll('.supplier_added').forEach(el => {
+    document.querySelectorAll(".supplier_added").forEach(el => {
       el.remove();
     });
 
     new Suppliers().loadData();
-
   }
 }
